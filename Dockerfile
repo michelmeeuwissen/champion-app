@@ -14,6 +14,6 @@ COPY ./docker/nginx/default.conf /etc/nginx/nginx.conf
 
 WORKDIR /usr/share/nginx/html
 RUN rm -rf ./*
-COPY --from=builder /opt/app-root/src/dist/pipeline-demo .
+COPY --from=builder /opt/app-root/src/dist/champion-app .
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
