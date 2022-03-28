@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: champion-app
+  name: champion-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: champion-app
+  template:
+    metadata:
+      labels:
+        app: champion-app
+    spec:
+      containers:
+        - image: "image-registry.openshift-image-registry.svc:5000/michel-zandbak/champion-app:latest"
+          imagePullPolicy: Always
+          name: champion-app
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            limits:
+              memory: 256Mi
+            requests:
+              memory: 100Mi
